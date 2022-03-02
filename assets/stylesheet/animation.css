@@ -1,0 +1,29 @@
+.fadeIn{
+    animation: fadeIn .7s cubic-bezier(.17,.67,.61,1.58) forwards;
+}
+.popIn{
+    animation: popIn 500ms cubic-bezier(.17,.67,.61,1.58) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn{
+    from{
+        transform: translateX(-30);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popIn{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
