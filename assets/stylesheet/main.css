@@ -184,13 +184,13 @@ li.active{
     justify-content: center;
     align-items: center;
     /* background-color: rgba(255, 175, 54, 0.7); */
-    background-color: #bbbbbb;
+    background-color: rgba(187, 187, 187, 0.7);
     margin-bottom: 5px;
 }
 .vertical-nav div:hover{
     color: #fff;
     /* background-color: rgb(255, 175, 54); */
-    background-color: #666;
+    background-color: #7a7a7a;
 }
 
 
@@ -516,6 +516,7 @@ h2.section-title{
     position: relative;
 }
 
+/* Trusted Partners *******/
 .trusted-partners{
     padding-top: 140px;
     padding-bottom: 100px;
