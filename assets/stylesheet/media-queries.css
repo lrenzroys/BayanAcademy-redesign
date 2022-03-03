@@ -236,77 +236,51 @@
         padding-top: 1rem;
     }
     
-    footer .wrap{
+    footer > .wrap{
         /* display: flex;
         flex-wrap: wrap;
         justify-content: center; */
         display: grid;
         grid-gap: 1rem;
-        grid-template-columns: repeat(2, 1fr);
-        /* grid-template-rows: repeat(1, 1fr) */
+        grid-row-gap: 2rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: 
+        "head head head"
+        "g1 g2 g3";
     }
-    footer .wrap > *{
-        /* min-width: 50%; */
-        /* border: 1px solid orange; */
+    .footer-info{
+        grid-area: head;
+    }
+    .footer-nav{
+        grid-area: g1;
+    }
+    .footer-programs{
+        grid-area: g2;
+    }
+    .footer-social{
+        grid-area: g3;
     }
     
     .footer-info > img{
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         width: 180px;
     }
-    
     .footer-info ul{
-        max-width: 350px;
+        max-width: 550px;
         list-style: none;
         font-size: 15px;
     }
-    .footer-info li{
-        margin-bottom: 10px;
-        color: #d4d4d4;
-    }
-    
+
     .footer-nav{
-    
-    }
-    .footer-nav h4{
-        color: #FFAF36;
-        margin-bottom: 10px;
-    }
-    .footer-nav{
-        list-style-type: none;
-        font-size: 15px;
-    }
-    .footer-nav li {
-        margin-bottom: 10px;
-    }
-    .footer-nav a{
-        color: #d4d4d4;
-        text-decoration: none;
-    }
-    
-    
-    .footer-programs h4{
-        color: #FFAF36;
-        margin-bottom: 10px;
+        font-size: 14px;
     }
     .footer-programs{
         list-style-type: none;
-        font-size: 15px;
-    }
-    .footer-programs li {
-        margin-bottom: 10px;
-    }
-    .footer-programs a{
-        color: #d4d4d4;
-        text-decoration: none;
-    }
-    .footer-social h4{
-        color: #FFAF36;
-        margin-bottom: 10px;
+        font-size: 14px;
     }
     .footer-social{
         list-style-type: none;
-        font-size: 15px;
+        font-size: 14px;
     }
     .footer-social li {
         margin-bottom: 10px;
@@ -315,20 +289,6 @@
         color: #d4d4d4;
         text-decoration: none;
     }
-    .copyright{
-        margin-top: 2rem;
-        font-size: 12px;
-        font-weight: 300;
-        text-align: center;
-        background: #272e3a;
-        color: #fff;
-        /* padding: 1rem; */
-    }
-    .copyright span{
-        color:#FFAF36;
-        font-weight: 500;
-    }
-    
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
