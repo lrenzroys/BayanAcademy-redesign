@@ -116,7 +116,7 @@ nav{
     position: absolute;
     top: 45%;
     width: 100%;
-    transform: translateY(-45%);
+    transform: translateY(-50%);
     padding: 0 3%;
     display: flex;
     justify-content: space-between;
