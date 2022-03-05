@@ -1,32 +1,64 @@
 window.onload = () => {
     
 // Carousel ***
-const leftArrow = document.querySelector('.left-arrow')
-const rightArrow = document.querySelector('.right-arrow')
+// const leftArrow = document.querySelector('.left-arrow')
+// const rightArrow = document.querySelector('.right-arrow')
 const slides = document.querySelectorAll('.slide')
+const slideController = document.querySelector('.carousel-control2')
 let currentSlide = 0;
 
-rightArrow.addEventListener('click', () => {
-    currentSlide+=1
-    if(currentSlide === slides.length) currentSlide = 0
-    slides.forEach(slide => slide.classList.remove("active"))
-    slides[currentSlide].classList.add('active')
+// Carousel controller
+for(let i = 0; i < [...slides].length; i++){
+    let span
+    if(i === 0){
+        let span = document.createElement('span')
+        span.classList.add('current-slide')
+        span.dataset.sliderNumber = i
+        slideController.append(span)
+        continue
+    }
+    span = document.createElement('span')
+    span.dataset.sliderNumber = i
+    slideController.append(span)
+}
+const carouselButton = document.querySelectorAll('.carousel-control2 span')
+slideController.addEventListener('click', (e) => {
+    if(e.target.matches('span')){
+        document.querySelectorAll('.carousel-control2 span').forEach(button => button.classList.remove('current-slide'))
+        document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'))
+
+        e.target.classList.add('current-slide')
+        slides[e.target.dataset.sliderNumber].classList.add('active')
+        console.log(document.querySelectorAll('.carousel-control2 span'));
+    }
 })
 
-leftArrow.addEventListener('click', ()=> {
-    if(currentSlide === 0) currentSlide = slides.length
-    currentSlide-=1
-    slides.forEach(slide => slide.classList.remove("active"))
-    slides[currentSlide].classList.add('active')
-})
+// rightArrow.addEventListener('click', () => {
+//     currentSlide+=1
+//     if(currentSlide === slides.length) currentSlide = 0
+//     slides.forEach(slide => slide.classList.remove("active"))
+//     slides[currentSlide].classList.add('active')
+// })
+
+// leftArrow.addEventListener('click', ()=> {
+//     if(currentSlide === 0) currentSlide = slides.length
+//     currentSlide-=1
+//     slides.forEach(slide => slide.classList.remove("active"))
+//     slides[currentSlide].classList.add('active')
+// })
 
 // autoplay carousel 
 setInterval(()=>{
     currentSlide+=1
     if(currentSlide === slides.length) currentSlide = 0
-    slides.forEach(slide => slide.classList.remove("active"))
+
+    for(let i=0; i<slides.length; i++){
+        slides[i].classList.remove('active')
+        carouselButton[i].classList.remove('current-slide')
+    }
     slides[currentSlide].classList.add('active')
-}, 5000)
+    carouselButton[currentSlide].classList.add('current-slide')
+}, 4000)
 
 // Show vertical nav
 setInterval(()=>{
@@ -35,7 +67,7 @@ setInterval(()=>{
 
 // Top navigation
 const $navContainer = document.querySelector('.nav-container')
-document.addEventListener('scroll', () => window.scrollY > 60 ? $navContainer.classList.add('shrink') : $navContainer.classList.remove('shrink'))
+window.addEventListener('scroll', () => window.scrollY > 60 ? $navContainer.classList.add('shrink') : $navContainer.classList.remove('shrink'))
 
 // Vertical navigation ****
 const verticalUp = document.querySelector('#vertical-nav-up')
