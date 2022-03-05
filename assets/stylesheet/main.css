@@ -488,7 +488,7 @@ h2.section-title{
 }
 .news-item{
     background: #fff;
-    width: 300px;
+    /* width: 300px; */
     box-shadow: 0px 3px 4px rgba(209, 209, 209, 0.25);
     border-radius: 3px;
 }

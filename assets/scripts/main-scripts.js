@@ -51,7 +51,7 @@ let sectionTracker = 0
 //     if(this.scrollY >= 1683 && this.scrollY < 2325) sectionTracker = 2;
 //     if(this.scrollY >= 2325 && this.scrollY < 3238) sectionTracker = 3;
 //     if(this.scrollY >= 3238 && this.scrollY < 3864) sectionTracker = 4;
-//     if(this.scrollY >= 3864 && this.scrollY < 5209) sectionTracker = 5;
+//     if(this.scrollY >= 3864 && this.scrollY < 5209) sectionTracker = 5;  
 // })
 
 // To go up 1 section
