@@ -71,7 +71,8 @@ nav{
     top:0;
     z-index: 0;
     list-style-type: none;
-    background-color: rgb(243, 243, 243);
+    /* background-color: #f3f3f3; */
+    background-color: #343b47;
     color:#fff;
     width: 100%;
     height: 100vh;
@@ -85,7 +86,8 @@ nav{
 }
 #nav-list a{
     text-decoration: none;
-    color:rgb(80, 79, 79);
+    /* color:rgb(80, 79, 79); */
+    color: #fff;
     padding: 1rem;
     display: inline-block;
 }
@@ -96,7 +98,6 @@ nav{
 
 /* Hero section  **********/
 .hero{
-    border: 1px solid #333;
     padding:1rem;
     max-width: 100%;
     height: 100vh;
@@ -112,19 +113,19 @@ nav{
     align-items: center;
 }
 .carousel-control2{
-    width:100%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    margin-top: 4rem;
+    gap: 1.5rem;
+    margin-top: 4rem auto;
 }
 .carousel-control2 span.current-slide{
     background-color: #FFAF36;
 }
 .carousel-control2 span{
     height: 8px;
-    width: 50px;
+    flex-grow: 1;
     background: #ececec;
     border-radius: 2px;
     transition: background-color 300ms linear;
