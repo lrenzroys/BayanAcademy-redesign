@@ -132,6 +132,9 @@
         position: relative;
     }
     .toggle-menu{
+        gap:.4rem
+    }
+    .toggle-menu span{
         width: 30px;
     }
     .vertical-nav div{
@@ -197,7 +200,18 @@
     .event-desc p{
         font-size: 1em;
     }
-    
+    .events-list2{
+        flex-direction: column;
+        gap:1rem;
+    }
+    .latest-event,
+    .previous-events{
+        width:100%;
+    }
+    .event-details{
+        gap:0rem;
+    }
+
     /* Trusted Partners */
     .partners-container{
         margin-top: 3rem;
@@ -253,8 +267,6 @@
     .toggle-menu span{
         width: 30px;
     }
-    
-
     /* Hero */
     .carousel-control2{
         width: 250px;
@@ -363,6 +375,17 @@
     .events-lists{
         max-width: 820px;
         position: relative;
+    }
+    .event-date{
+        min-width : 120px;
+    }
+    .event-date span:first-child{
+        font-size: 2rem;
+        font-weight: 300;
+    }
+    .event-date span:last-child{
+        font-size: .9rem;
+        margin-top:-10px;
     }
     .event-item{
         height: auto;

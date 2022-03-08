@@ -9,9 +9,15 @@ window.onload = () => {
             mainNav.classList.add('show-menu')
             return null
         } 
-
         e.target.classList.remove('toggled')
         mainNav.classList.remove('show-menu')
+    })
+
+    mainNav.addEventListener('click', (e) => {
+        if(e.target.matches('a')){
+            menuBtn.classList.remove('toggled')
+            mainNav.classList.remove('show-menu')
+        }
     })
     
     // Carousel ***
@@ -130,7 +136,7 @@ window.onload = () => {
     })
 
 
-    // About-Us animation
+    // About-Us animation **********
     let aboutUs = document.querySelector('.about-us-desc')
     let mission = document.querySelector('.mission')
     let vision = document.querySelector('.vision')
@@ -150,10 +156,31 @@ window.onload = () => {
         }
         // posY - window.innerHeight = bottom edge
         // console.log(window.scrollY , window.innerHeight);
-        if(window.scrollY >= aboutUsY - window.innerHeight) aboutUs.classList.add('fadeIn')
-        if(window.scrollY >= missionY - window.innerHeight) mission.classList.add('fadeIn')
-        if(window.scrollY >= visionY - window.innerHeight) vision.classList.add('fadeIn')
-
+        if(window.scrollY >= aboutUsY - window.innerHeight - 100) aboutUs.classList.add('fadeIn')
+        if(window.scrollY >= missionY - window.innerHeight - 100) mission.classList.add('fadeIn')
+        if(window.scrollY >= visionY - window.innerHeight - 100) vision.classList.add('fadeIn')
     })
+
+    // Events ***********
+    const events = document.querySelectorAll('.event-info')
+    events.forEach((event)=>{
+        let eventTitle = event.children[0]
+        let eventLocation = event.children[1]
+        event.title = `${eventTitle.innerText} - ${eventLocation.innerText}`;
+        
+        if(eventTitle.innerText.length > 70) eventTitle.innerText = eventTitle.innerText.substring(0, 70) + ' ...' 
+        if(eventLocation.innerText.length > 40) eventLocation.innerText = eventLocation.innerText.substring(0, 40) + ' ...'
+    })
+
+
+    // News *********
+    const newsDetails = document.querySelectorAll('.news-desc')
+    newsDetails.forEach( detail => {
+        let title = detail.children[0]
+        let desc = detail.children[1]
+        if(title.innerText.length > 70) title.innerText = title.innerText.substring(0, 50) + " ..."
+        if(desc.innerText.length > 90) desc.innerText = desc.innerText.substring(0, 110) + " ..."
+    })
+
 
 } // End of window onload
