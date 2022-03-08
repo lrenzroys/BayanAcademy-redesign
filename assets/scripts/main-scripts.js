@@ -4,9 +4,14 @@ window.onload = () => {
     const menuBtn = document.querySelector('.toggle-menu')
     const mainNav = document.querySelector('#nav-list') 
     menuBtn.addEventListener('click', (e) => {
-        mainNav.classList.toggle('show-menu')
-        e.target.classList.toggle('toggled')
-        
+        if(!e.target.classList.contains('toggled')){
+            e.target.classList.add('toggled')
+            mainNav.classList.add('show-menu')
+            return null
+        } 
+
+        e.target.classList.remove('toggled')
+        mainNav.classList.remove('show-menu')
     })
     
     // Carousel ***
