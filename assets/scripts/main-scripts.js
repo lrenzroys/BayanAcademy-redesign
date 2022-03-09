@@ -83,7 +83,7 @@ window.onload = () => {
     // Show vertical nav
     setInterval(()=>{
         document.querySelector('.vertical-nav').classList.add('show-v-nav')
-    }, 2000)
+    }, 1000)
 
     // Top navigation
     const $navContainer = document.querySelector('.nav-container')
@@ -161,8 +161,24 @@ window.onload = () => {
         if(window.scrollY >= visionY - window.innerHeight - 100) vision.classList.add('fadeIn')
     })
 
+    // Development Programs ****************
+    const devProgramContainer = document.querySelector('#dev-program')
+    const programsContainer = document.querySelectorAll('.program-container')
+    document.addEventListener('scroll', () => {
+        if(window.scrollY >= devProgramContainer.offsetTop - devProgramContainer.clientHeight){
+            let delay = 500;
+            programsContainer.forEach(program => {    
+                program.style.animationDelay = delay + 'ms';
+                program.classList.add('fadeIn')
+                delay+= 400;
+            })
+        }
+    })
+
     // Events ***********
     const events = document.querySelectorAll('.event-info')
+
+    // to limit string text shown
     events.forEach((event)=>{
         let eventTitle = event.children[0]
         let eventLocation = event.children[1]
@@ -172,14 +188,27 @@ window.onload = () => {
         if(eventLocation.innerText.length > 40) eventLocation.innerText = eventLocation.innerText.substring(0, 40) + ' ...'
     })
 
-
     // News *********
     const newsDetails = document.querySelectorAll('.news-desc')
+    const newsContainer = document.querySelector('#news')
+    const newsItem = document.querySelectorAll('.news-item')
+    // to limit string text shown
     newsDetails.forEach( detail => {
         let title = detail.children[0]
         let desc = detail.children[1]
         if(title.innerText.length > 70) title.innerText = title.innerText.substring(0, 50) + " ..."
         if(desc.innerText.length > 90) desc.innerText = desc.innerText.substring(0, 110) + " ..."
+    })
+
+    document.addEventListener('scroll', () => {
+        if(window.scrollY >= newsContainer.offsetTop - newsContainer.clientHeight){
+            let delay = 500;
+            newsItem.forEach(news => {    
+                news.style.animationDelay = delay + 'ms';
+                news.classList.add('fadeIn')
+                delay+= 400;
+            })
+        }
     })
 
 
