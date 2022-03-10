@@ -2,22 +2,31 @@ window.onload = () => {
 
     // Navigation
     const menuBtn = document.querySelector('.toggle-menu')
-    const mainNav = document.querySelector('#nav-list') 
-    menuBtn.addEventListener('click', (e) => {
-        if(!e.target.classList.contains('toggled')){
-            e.target.classList.add('toggled')
-            mainNav.classList.add('show-menu')
-            return null
-        } 
-        e.target.classList.remove('toggled')
-        mainNav.classList.remove('show-menu')
+    const mainNav = document.querySelector('#nav-list')
+    menuBtn.addEventListener('click', (e) => {     
+        menuBtn.classList.toggle('toggled')
+        mainNav.classList.toggle('show-menu')
     })
 
     mainNav.addEventListener('click', (e) => {
         if(e.target.matches('a')){
-            menuBtn.classList.remove('toggled')
-            mainNav.classList.remove('show-menu')
-        }
+            e.target.animate([
+                {transform: 'translateX(0px)'},
+                {transform: 'translateX(-30px)'},
+                {transform: 'translateX(0px)'},
+            ],
+            { 
+                duration: 400,
+                fill: 'none'
+            })
+
+            setTimeout( () => {
+                menuBtn.classList.toggle('toggled')
+                mainNav.classList.toggle('show-menu')
+            }, 400)  
+
+            sectionTracker = e.target.dataset.section
+        }   
     })
     
     // Carousel ***
@@ -176,10 +185,22 @@ window.onload = () => {
     })
 
     // Events ***********
-    const events = document.querySelectorAll('.event-info')
+    const eventsSection = document.querySelector('#events')
+    const eventsContainer = document.querySelector('.events-list2')
+    const eventsInfo = document.querySelectorAll('.event-info')
+    document.addEventListener('scroll', () => {
+        let delay = 500;
+        if(window.scrollY >= eventsSection.offsetTop - eventsContainer.clientHeight){
+            [...eventsContainer.children].forEach( event => {
+                event.style.animationDelay = delay + 'ms';
+                event.classList.add('fadeIn')
+                delay+= 400;
+            })
+        }
+    })
 
     // to limit string text shown
-    events.forEach((event)=>{
+    eventsInfo.forEach((event)=>{
         let eventTitle = event.children[0]
         let eventLocation = event.children[1]
         event.title = `${eventTitle.innerText} - ${eventLocation.innerText}`;
@@ -192,6 +213,7 @@ window.onload = () => {
     const newsDetails = document.querySelectorAll('.news-desc')
     const newsContainer = document.querySelector('#news')
     const newsItem = document.querySelectorAll('.news-item')
+    
     // to limit string text shown
     newsDetails.forEach( detail => {
         let title = detail.children[0]
@@ -200,12 +222,29 @@ window.onload = () => {
         if(desc.innerText.length > 90) desc.innerText = desc.innerText.substring(0, 110) + " ..."
     })
 
+    // Animate on scroll
     document.addEventListener('scroll', () => {
         if(window.scrollY >= newsContainer.offsetTop - newsContainer.clientHeight){
             let delay = 500;
             newsItem.forEach(news => {    
                 news.style.animationDelay = delay + 'ms';
                 news.classList.add('fadeIn')
+                delay+= 400;
+            })
+        }
+    })
+
+    // Trusted Partners **********************
+    const trustedPartnerCon = document.querySelector('#trusted-partners')
+    const imageCon = document.querySelector('.partners-container')
+    const TPimage = document.querySelectorAll('.partners-container img')
+
+    document.addEventListener('scroll', () => {
+        if(window.scrollY >= trustedPartnerCon.offsetTop - imageCon.clientHeight){
+            let delay = 500;
+            TPimage.forEach(images => {    
+                images.style.animationDelay = delay + 'ms';
+                images.classList.add('fadeIn')
                 delay+= 400;
             })
         }
