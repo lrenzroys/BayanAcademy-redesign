@@ -12,7 +12,7 @@ window.onload = () => {
         if(e.target.matches('a')){
             e.target.animate([
                 {transform: 'translateX(0px)'},
-                {transform: 'translateX(-20px)'},
+                {transform: 'translateX(-30px)'},
                 {transform: 'translateX(0px)'},
             ],
             { 
@@ -30,8 +30,6 @@ window.onload = () => {
     })
     
     // Carousel ***
-    // const leftArrow = document.querySelector('.left-arrow')
-    // const rightArrow = document.querySelector('.right-arrow')
     const slides = document.querySelectorAll('.slide')
     const slideController = document.querySelector('.carousel-control2')
     let currentSlide = 0;
@@ -61,20 +59,6 @@ window.onload = () => {
             console.log(document.querySelectorAll('.carousel-control2 span'));
         }
     })
-
-    // rightArrow.addEventListener('click', () => {
-    //     currentSlide+=1
-    //     if(currentSlide === slides.length) currentSlide = 0
-    //     slides.forEach(slide => slide.classList.remove("active"))
-    //     slides[currentSlide].classList.add('active')
-    // })
-
-    // leftArrow.addEventListener('click', ()=> {
-    //     if(currentSlide === 0) currentSlide = slides.length
-    //     currentSlide-=1
-    //     slides.forEach(slide => slide.classList.remove("active"))
-    //     slides[currentSlide].classList.add('active')
-    // })
 
     // autoplay carousel 
     setInterval(()=>{
@@ -106,14 +90,14 @@ window.onload = () => {
     const sectionsOffsetTop = [...pageSection].map(section => section.offsetTop)
     let sectionTracker = 0
 
-    // window.addEventListener('scroll', ()=>{
-    //     if(this.scrollY >= 0 && this.scrollY < 746) sectionTracker = 0;
-    //     if(this.scrollY >= 746 && this.scrollY < 1683) sectionTracker = 1;
-    //     if(this.scrollY >= 1683 && this.scrollY < 2325) sectionTracker = 2;
-    //     if(this.scrollY >= 2325 && this.scrollY < 3238) sectionTracker = 3;
-    //     if(this.scrollY >= 3238 && this.scrollY < 3864) sectionTracker = 4;
-    //     if(this.scrollY >= 3864 && this.scrollY < 5209) sectionTracker = 5;  
-    // })
+    window.addEventListener('scroll', ()=>{
+        if(this.scrollY >= 0 && this.scrollY < 746) sectionTracker = 0;
+        if(this.scrollY >= 746 && this.scrollY < 1683) sectionTracker = 1;
+        if(this.scrollY >= 1683 && this.scrollY < 2325) sectionTracker = 2;
+        if(this.scrollY >= 2325 && this.scrollY < 3238) sectionTracker = 3;
+        if(this.scrollY >= 3238 && this.scrollY < 3864) sectionTracker = 4;
+        if(this.scrollY >= 3864 && this.scrollY < 5209) sectionTracker = 5;  
+    })
 
     // To go up 1 section
     verticalUp.addEventListener('click', () => {
@@ -248,6 +232,31 @@ window.onload = () => {
                 delay+= 400;
             })
         }
+    })
+
+
+    // Contact Us *****************************
+    const contactForm = document.querySelector('form.contact-form')
+    const submitBtn = document.querySelector('form.contact-form button')
+
+    contactForm.addEventListener('click', (e) => {
+        e.preventDefault()
+        let emptyInput
+        if(e.target.matches('button')){
+            emptyInput = [...contactForm.children].filter( input => {
+                let inputVal = input.value.trim()
+                if(inputVal !== '') {
+                    input.classList.remove('required')
+                    input.classList.add('cleared')
+                }
+                return inputVal === ''
+            })
+            emptyInput.forEach(input => {
+                input.classList.add('required')
+                input.classList.remove('cleared')
+            })
+        }
+        
     })
 
 
