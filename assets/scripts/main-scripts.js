@@ -12,7 +12,7 @@ window.onload = () => {
         if(e.target.matches('a')){
             e.target.animate([
                 {transform: 'translateX(0px)'},
-                {transform: 'translateX(-30px)'},
+                {transform: 'translateX(-20px)'},
                 {transform: 'translateX(0px)'},
             ],
             { 
